@@ -3,9 +3,8 @@
 # bonus: returns a string of all missing letters as a string. ex: find_missing_letter("ace") would return "bd", write your own test.
 
 def find_missing_letter(range)
-result = ""
-(range[0]..range[-1]).to_a.each{|letter| result << letter unless range.include?(letter)}
-result
+result = (range[0]..range[-1]).to_a.map{|letter| letter unless range.include?(letter)}.compact.join
+result.length > 0 ? result : nil
 
 # Very Long Way Below!!!!
 # alphabet = ("a".."z").to_a
