@@ -2,30 +2,35 @@
 # as a string. If there is no missing letter, the method should return nil.
 # bonus: returns a string of all missing letters as a string. ex: find_missing_letter("ace") would return "bd", write your own test.
 
-def find_missing_letter(range) #includes  the  results of bonus.
-alphabet = ("a".."z").to_a     #admittedly bonus was integrated very sloppy but the
-index_of_range_letters = []    #results required are correct, will try to clean up code more.
-all_missing_letters = []
+def find_missing_letter(range)
+result = ""
+(range[0]..range[-1]).to_a.each{|letter| result << letter unless range.include?(letter)}
+result
 
-i = 0
-while i < range.length
-  index_of_range_letters << alphabet.index(range[i])
-i += 1
-end
-
-i = 0
-while i < (index_of_range_letters.length - 1)
-  each_index = index_of_range_letters[i]
-  if each_index + 1 < index_of_range_letters[i + 1]
-    all_missing_letters << alphabet[each_index + 1]
-    ((index_of_range_letters[i + 1] - each_index) - 1).times do
-      all_missing_letters << alphabet[each_index + 1]
-      each_index = each_index + 1
-      end
-    end
-  i += 1
-  end
-all_missing_letters.length > 1 ?  all_missing_letters.uniq.join : nil
+# Very Long Way Below!!!!
+# alphabet = ("a".."z").to_a
+# index_of_range_letters = []
+# all_missing_letters = []
+#
+# i = 0
+# while i < range.length
+#   index_of_range_letters << alphabet.index(range[i])
+# i += 1
+# end
+#
+# i = 0
+# while i < (index_of_range_letters.length - 1)
+#   each_index = index_of_range_letters[i]
+#   if each_index + 1 < index_of_range_letters[i + 1]
+#     all_missing_letters << alphabet[each_index + 1]
+#     ((index_of_range_letters[i + 1] - each_index) - 1).times do
+#       all_missing_letters << alphabet[each_index + 1]
+#       each_index = each_index + 1
+#       end
+#     end
+#   i += 1
+#   end
+# all_missing_letters.length > 1 ?  all_missing_letters.uniq.join : nil
 end
 
 puts "TESTING find_missing_letter..."
